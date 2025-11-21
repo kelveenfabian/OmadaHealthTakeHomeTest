@@ -54,8 +54,9 @@ dependencies {
     //Retrofit
     implementation(libs.squareup.retrofit)
     implementation(libs.squareup.gson)
+    implementation(libs.squareup.http.logging.interceptor)
 
-    
+
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
