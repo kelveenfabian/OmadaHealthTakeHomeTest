@@ -22,7 +22,5 @@ object NetworkClient {
             .build()
     }
 
-    fun <T> createService(serviceClass: Class<T>): T {
-        return retrofit.create(serviceClass)
-    }
+    val flickrService: FlickrApiService by lazy { retrofit.create(FlickrApiService::class.java) }
 }
