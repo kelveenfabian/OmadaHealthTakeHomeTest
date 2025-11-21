@@ -8,10 +8,11 @@ import retrofit2.http.Query
 interface FlickrApiService {
 
     @GET("/services/rest/")
-    suspend fun getRecent(
-        @Query("method") method: String,
-        @Query("api_key") apiKey: String,
-        @Query("format") format: String,
-        @Query("nojsoncallback") noJsonCallback: String,
+    suspend fun getPhotoMetadata(
+        @Query("method") method: String? = null,
+        @Query("api_key") apiKey: String? = null,
+        @Query("format") format: String? = null,
+        @Query("text") text: String? = null,
+        @Query("nojsoncallback") noJsonCallback: String? = null,
     ) : Response<RecentPhotoResponse>
 }
