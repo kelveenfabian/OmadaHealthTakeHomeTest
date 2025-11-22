@@ -56,6 +56,10 @@ dependencies {
     implementation(libs.squareup.gson)
     implementation(libs.squareup.http.logging.interceptor)
 
+    //Coil
+    implementation(libs.coil.compose)
+    implementation(libs.coil.network.okhttp)
+
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
