@@ -7,8 +7,10 @@ import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
@@ -55,7 +57,11 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             OmadaHealthTakeHomeTestTheme {
-                Scaffold(modifier = Modifier.fillMaxSize().background(Color.Gray)) { innerPadding ->
+                Scaffold(
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .background(Color.Gray)
+                ) { innerPadding ->
                     FlickrScreen(
                         viewModel = viewModel,
                         modifier = Modifier.padding(innerPadding)
@@ -85,23 +91,24 @@ fun FlickrScreen(viewModel: FlickrViewModel, modifier: Modifier) {
         }
 
         is FlickrUiState.Success -> {
-            Box(
-                modifier = Modifier.fillMaxSize(),
-            ) {
-                var expanded by rememberSaveable { mutableStateOf(false) }
 
+            var expanded by rememberSaveable { mutableStateOf(false) }
+
+            Column(
+                modifier = Modifier.fillMaxSize()
+            ) {
                 SearchBar(
-                    modifier = Modifier.align(Alignment.TopCenter),
+                    modifier = Modifier.fillMaxWidth().padding(bottom = 16.dp),
                     inputField = {
                         SearchBarDefaults.InputField(
                             query = "Search",
                             onQueryChange = { "Yo" },
                             onSearch = {
-                                {"yo"} //Add MainEventUi to VM
+                                { "yo" } //Add MainEventUi to VM
                                 expanded = false
                             },
                             expanded = expanded,
-                            onExpandedChange = {expanded = it},
+                            onExpandedChange = { expanded = it },
                             placeholder = { Text("Search") }
                         )
                     },
@@ -118,8 +125,7 @@ fun FlickrScreen(viewModel: FlickrViewModel, modifier: Modifier) {
                                 modifier = Modifier
                                     .aspectRatio(1f)
                                     .clip(RectangleShape)
-                                    .padding(4.dp)
-                                ,
+                                    .padding(4.dp),
                                 contentAlignment = Alignment.Center
                             ) {
                                 AsyncImage(
@@ -136,7 +142,6 @@ fun FlickrScreen(viewModel: FlickrViewModel, modifier: Modifier) {
                 }
 
                 LazyVerticalGrid(
-                    modifier = modifier.fillMaxSize(),
                     columns = GridCells.Adaptive(minSize = 128.dp)
                 ) {
                     items(state.data) { photoItem ->
@@ -145,8 +150,7 @@ fun FlickrScreen(viewModel: FlickrViewModel, modifier: Modifier) {
                             modifier = Modifier
                                 .aspectRatio(1f)
                                 .clip(RectangleShape)
-                                .padding(4.dp)
-                            ,
+                                .padding(4.dp),
                             contentAlignment = Alignment.Center
                         ) {
                             AsyncImage(
