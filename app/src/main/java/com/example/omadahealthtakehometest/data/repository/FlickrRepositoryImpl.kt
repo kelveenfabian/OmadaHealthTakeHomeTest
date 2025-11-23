@@ -17,10 +17,13 @@ class FlickrRepositoryImpl @Inject constructor(
     }
 
     override suspend fun fetchRecentPhotos(): NetworkResult<RecentPhotoResponse> {
-       return fetchRecentPhotoResponseNetworkResult()
+        return fetchRecentPhotoResponseNetworkResult()
     }
 
-    private suspend fun fetchRecentPhotoResponseNetworkResult(method: String? = null, text: String? = null): NetworkResult<RecentPhotoResponse> {
+    private suspend fun fetchRecentPhotoResponseNetworkResult(
+        method: String? = null,
+        text: String? = null
+    ): NetworkResult<RecentPhotoResponse> {
         return networkResultHandler {
             apiService.getPhotoMetadata(
                 method = method ?: "flickr.photos.getRecent",

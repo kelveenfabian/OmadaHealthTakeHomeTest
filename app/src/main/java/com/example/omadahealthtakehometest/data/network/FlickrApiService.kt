@@ -11,5 +11,5 @@ interface FlickrApiService {
     suspend fun getPhotoMetadata(
         @Query("method") method: String,
         @Query("text") text: String? = null,
-    ) : Response<RecentPhotoResponse>
+    ): Response<RecentPhotoResponse>
 }
