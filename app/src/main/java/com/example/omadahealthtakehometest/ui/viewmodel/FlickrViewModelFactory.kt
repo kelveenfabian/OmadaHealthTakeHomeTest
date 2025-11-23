@@ -2,18 +2,16 @@ package com.example.omadahealthtakehometest.ui.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.example.omadahealthtakehometest.data.network.NetworkClient
-import com.example.omadahealthtakehometest.data.repository.FlickrRepository
+import com.example.omadahealthtakehometest.domain.repository.FlickrRepository
+import jakarta.inject.Inject
 
 @Suppress("UNCHECKED_CAST")
-class FlickrViewModelFactory : ViewModelProvider.Factory {
+class FlickrViewModelFactory @Inject constructor(
+    private val flickrRepository: FlickrRepository,
+) : ViewModelProvider.Factory {
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
         if (modelClass.isAssignableFrom(FlickrViewModel::class.java)) {
-            return FlickrViewModel(
-                FlickrRepository(
-                    NetworkClient.flickrService
-                )
-            ) as T
+            return FlickrViewModel(flickrRepository) as T
         }
         throw IllegalStateException("Unknown View Model Found")
     }

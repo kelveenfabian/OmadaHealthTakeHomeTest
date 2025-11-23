@@ -5,13 +5,11 @@ import com.example.omadahealthtakehometest.data.network.FlickrApiService
 import com.example.omadahealthtakehometest.data.network.NetworkResult
 import com.example.omadahealthtakehometest.data.network.networkResultHandler
 import com.example.omadahealthtakehometest.domain.repository.FlickrRepository
-import com.example.omadahealthtakehometest.BuildConfig
+import jakarta.inject.Inject
 
-class FlickrRepositoryImpl(
+class FlickrRepositoryImpl @Inject constructor(
     val apiService: FlickrApiService
 ) : FlickrRepository {
-    private val format = "json" //Could be defaulted in service
-    private val nojsoncallback = "1" //Could be defaulted in service
 
     override suspend fun fetchPhotosFromSearch(text: String?): NetworkResult<RecentPhotoResponse> {
         val method = "flickr.photos.search"
@@ -26,10 +24,7 @@ class FlickrRepositoryImpl(
         return networkResultHandler {
             apiService.getPhotoMetadata(
                 method = method ?: "flickr.photos.getRecent",
-                apiKey = BuildConfig.API_KEY,
-                format = format,
                 text = text,
-                noJsonCallback = nojsoncallback,
             )
         }
     }
