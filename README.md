@@ -14,6 +14,9 @@ AI Usage:
 - https://gemini.google.com/share/a9622ff43ad2
 - The networkResultHandler function was also created with AI for optimizing apiCalls
 
+Recording:
+- App: https://drive.google.com/file/d/1kvul0RcUBk5yHtMWDwQTxNb__n85PWfO/view?usp=sharing
+
 Missing:
 - Recording of session
 - Bonus requirements
