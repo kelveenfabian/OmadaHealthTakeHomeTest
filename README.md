@@ -27,3 +27,11 @@ Missing:
 - Bonus requirements
 - No pagination
 
+Transparency on AI usage within project due to no recoding (I'm kind of new to the recording session form of interviewing): 
+- Creating dependency injection modules in Hilt
+- Creating AuthInterceptor class for hiding API_KEY (Was going to use BuildConfig.API_KEY in repository functions. Went with this option because it also hid the "format" and "nojsoncallback" queries)
+- Cleaned up composables. Images weren't properly cropped.
+- Optimization of three composables: ErrorContent(), LoadingContent(), SuccessContent()
+- Using the `val searchQuery/var _searchQuery` backing property and how to properly use operators in init{} view model. Wanted to optimize user events (Was using a Launched Effect before and an immutable variable)
+- Creating a mapper for mapping response to domain models. Wanted to create a ui -> domain/data -> domain architecture.
+
