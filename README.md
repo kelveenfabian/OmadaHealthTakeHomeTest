@@ -15,7 +15,7 @@ AI Usage:
 - The networkResultHandler function was also created with AI for optimizing apiCalls
 
 Missing:
-Recording of session
-Bonus requirements
-No pagination
+- Recording of session
+- Bonus requirements
+- No pagination
 
